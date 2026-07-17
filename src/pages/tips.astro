@@ -1,59 +1,85 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import PostCard from '../components/PostCard.astro';
+import PostCta from '../components/PostCta.astro';
 
-const guides = (await getCollection('blog'))
-  .filter((p) => p.data.tag === 'Tips')
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const guides = (await getCollection('tips')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const readMins = (d: { readMins?: number }, body: string) =>
+  d.readMins ?? Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 200));
 
 const quick = [
-  { i: '⏳', t: 'Watch the %, not the clock', d: 'At ~80% of a window, wrap up rather than starting a big task — you rarely finish before the throttle.' },
+  { i: '⏳', t: 'Watch the %, not the clock', d: 'At ~80% of a window, wrap up rather than starting a big task - you rarely finish before the throttle.' },
   { i: '🌅', t: 'Batch heavy jobs off-peak', d: 'Deep research and image batches are much happier in your early morning, before US daytime demand hits.' },
   { i: '🔁', t: 'Split your models', d: 'Route routine prompts to a lighter model and save the expensive one for when it actually matters.' },
-  { i: '🧭', t: 'Front-load exploration', d: "Your window starts on the first message — burn cheap thinking early, save execution for later." },
+  { i: '🧭', t: 'Front-load exploration', d: 'Your window starts on the first message - burn cheap thinking early, save execution for later.' },
   { i: '🔔', t: 'Take the peak-hour nudge', d: 'When a peak alert fires, step away for 15 minutes. You return to a fresher window and faster responses.' },
   { i: '📅', t: 'Know your reset time', d: 'At 90% with 40 minutes to reset, waiting often beats fighting a throttled session.' },
 ];
 ---
-<Base title="Tips — AI Karma Tracker" description="Quick, practical tips to stretch your AI usage limits.">
-  <header class="wrap" style="padding:64px 24px 0; text-align:center">
-    <p style="font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--brand-ink)">TIPS</p>
-    <h1 style="font-size:42px; margin-top:10px">Stretch your limits</h1>
-    <p class="muted" style="font-size:18px; max-width:560px; margin:16px auto 0">Bite-size habits that make every AI window last longer.</p>
+<Base title="Tips - AI Karma Tracker" description="Quick, practical tips to stretch your AI usage limits.">
+  <header class="tips-head wrap">
+    <p class="eyebrow">TIPS</p>
+    <h1>Stretch your limits</h1>
+    <p class="muted lead">Bite-size habits that make every AI window last longer.</p>
   </header>
 
-  <section class="wrap" style="padding:44px 24px 0">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px">
-      {quick.map((q) => (
-        <div class="card reveal" style="padding:22px">
-          <div style="font-size:24px">{q.i}</div>
-          <h3 style="font-size:17px; margin-top:10px">{q.t}</h3>
-          <p class="muted" style="margin-top:8px; font-size:15px">{q.d}</p>
-        </div>
-      ))}
-    </div>
+  <section class="wrap quick-grid">
+    {quick.map((q) => (
+      <div class="quick-card reveal">
+        <div class="emoji">{q.i}</div>
+        <h3>{q.t}</h3>
+        <p class="muted">{q.d}</p>
+      </div>
+    ))}
   </section>
 
   {guides.length > 0 && (
-    <section class="wrap" style="padding:64px 24px 0">
-      <h2 style="font-size:26px; text-align:center">Go deeper</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; margin-top:22px">
-        {guides.map((p) => (
-          <a class="card reveal" href={`/blog/${p.id}`} style="padding:20px; display:block">
-            <h3 style="font-size:18px">{p.data.title}</h3>
-            <p class="muted" style="margin-top:8px; font-size:15px">{p.data.description}</p>
-            <span style="display:inline-block; margin-top:10px; color:var(--brand); font-weight:600; font-size:14px">Read →</span>
-          </a>
+    <section class="wrap deeper">
+      <h2>Go deeper</h2>
+      <div class="grid">
+        {guides.map((post) => (
+          <PostCard
+            href={`/tips/${post.id}`}
+            title={post.data.title}
+            description={post.data.description}
+            tag={post.data.tag}
+            date={post.data.date}
+            readMins={readMins(post.data, post.body)}
+            image={post.data.image}
+          />
         ))}
       </div>
     </section>
   )}
 
-  <section class="wrap" style="padding:64px 24px 0">
-    <div class="card reveal" style="text-align:center; padding:44px 24px; background:linear-gradient(135deg,#eef2ff,#faf5ff); border-color:#e0e7ff">
-      <h2 style="font-size:26px">Let the tracker do the watching</h2>
-      <p class="muted" style="margin:10px auto 0; max-width:440px; font-size:16px">Live limits, resets and peak-hour alerts across your whole AI stack.</p>
-      <a class="btn" style="margin-top:18px" href="/#pricing">Add to Chrome — free</a>
-    </div>
+  <section class="wrap cta-wrap">
+    <PostCta />
   </section>
 </Base>
+
+<style>
+  .tips-head { padding: 64px 24px 0; text-align: center; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--brand-ink); }
+  .tips-head h1 { font-size: 42px; margin-top: 10px; }
+  .lead { font-size: 18px; max-width: 560px; margin: 16px auto 0; }
+
+  .quick-grid {
+    padding: 44px 24px 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+  }
+  .quick-card { padding: 22px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .quick-card .emoji { font-size: 24px; }
+  .quick-card h3 { font-size: 17px; margin-top: 10px; }
+  .quick-card p { margin-top: 8px; font-size: 15px; }
+
+  .deeper { padding: 64px 24px 0; }
+  .deeper h2 { font-size: 26px; text-align: center; }
+  .grid {
+    margin-top: 22px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+  }
+  .cta-wrap { padding: 24px; }
+</style>

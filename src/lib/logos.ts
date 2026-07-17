@@ -1,5 +1,5 @@
 // Simple brand logo chips (rounded tile + white glyph) per provider.
-// Abstracted marks in each brand's colour — not the exact trademarks.
+// Abstracted marks in each brand's colour - not the exact trademarks.
 const tile = (bg: string, glyph: string) =>
   `<svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style="flex:0 0 auto;border-radius:7px">
     <rect width="28" height="28" rx="7" fill="${bg}"/>${glyph}</svg>`;

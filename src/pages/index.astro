@@ -6,12 +6,12 @@ const chromeUrl = import.meta.env.PUBLIC_CHROME_URL ?? '#';
 // Gumroad checkout links (one per product/period), public permalinks.
 const gumroad = {
   hobby: {
-    monthly: 'https://brutalthemes.gumroad.com/l/hobbyist-monthly',
-    yearly: 'https://brutalthemes.gumroad.com/l/hobbyist-yearly',
+    monthly: 'https://karmatracker.gumroad.com/l/hobbyist-monthly',
+    yearly: 'https://karmatracker.gumroad.com/l/hobbyist-yearly',
   },
   expert: {
-    monthly: 'https://brutalthemes.gumroad.com/l/expert-monthly',
-    yearly: 'https://brutalthemes.gumroad.com/l/expert-yearly',
+    monthly: 'https://karmatracker.gumroad.com/l/expert-monthly',
+    yearly: 'https://karmatracker.gumroad.com/l/expert-yearly',
   },
 };
 
@@ -24,33 +24,33 @@ const firstClass = [
   { name: 'Perplexity', what: 'Pro-search allowance', color: '#20808D' },
 ];
 const features = [
-  { t: 'Live limits', d: 'Real remaining tokens, messages and reset times read straight from your own sessions — no API keys required.', i: '📊' },
+  { t: 'Live limits', d: 'Real remaining tokens, messages and reset times read straight from your own sessions - no API keys required.', i: '📊' },
   { t: 'Smart alerts', d: 'Get warned before you hit the wall, and a nudge to rest during peak hours when limits burn faster.', i: '🔔' },
   { t: 'Peak hours', d: 'Know when shared capacity is tight so you can plan heavy work around the crunch.', i: '🌙' },
   { t: 'Usage history', d: 'See your runway over time with per-provider charts. Spot trends and plan your week.', i: '📈' },
-  { t: 'One dashboard', d: 'Claude, ChatGPT, Codex, Grok and Perplexity — all in a single toolbar popup.', i: '🧭' },
+  { t: 'One dashboard', d: 'Claude, ChatGPT, Codex, Grok and Perplexity - all in a single toolbar popup.', i: '🧭' },
   { t: 'You keep the keys', d: 'Everything runs locally in your browser. Your sessions never leave your machine.', i: '🔒' },
 ];
 const faqs = [
   ['Do I need to paste API keys?', 'No. Limit tracking reads your existing logged-in sessions in the browser. API keys are only optional, for tools that have no web session (like Claude Code).'],
   ['Which tools are fully tracked?', 'Claude, ChatGPT, Codex, Cursor, Grok and Perplexity get live limit numbers today. More are on the way.'],
-  ['Is my data private?', 'Yes — the extension runs entirely in your browser. Usage is stored locally; nothing is sent to us.'],
+  ['Is my data private?', 'Yes - the extension runs entirely in your browser. Usage is stored locally; nothing is sent to us.'],
   ['How does billing work?', 'Payments are handled securely by Gumroad. You can switch monthly/yearly or cancel anytime from the billing portal.'],
 ];
 ---
 <Base>
   <header class="wrap" style="padding:72px 24px 24px; text-align:center">
     <div style="display:inline-flex; gap:8px; align-items:center; font-size:13px; font-weight:600; color:var(--brand-ink); background:#eef2ff; border:1px solid #e0e7ff; padding:6px 12px; border-radius:999px">
-      <span>●</span> Works in Chrome — free to start
+      <span>●</span> Works in Chrome - free to start
     </div>
     <h1 style="font-size:56px; margin:22px auto 0; max-width:760px">
       See your AI limits <span style="background:linear-gradient(120deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">before they stop you.</span>
     </h1>
     <p class="muted" style="font-size:19px; max-width:620px; margin:20px auto 0">
-      Live usage, reset times and smart alerts for Claude, ChatGPT, Codex, Cursor, Grok and Perplexity — in one clean dashboard. No API keys needed.
+      Live usage, reset times and smart alerts for Claude, ChatGPT, Codex, Cursor, Grok and Perplexity - in one clean dashboard. No API keys needed.
     </p>
     <div style="display:flex; gap:12px; justify-content:center; margin-top:30px; flex-wrap:wrap">
-      <a class="btn" href={chromeUrl}>Add to Chrome — free</a>
+      <a class="btn" href={chromeUrl}>Add to Chrome - free</a>
       <a class="btn ghost" href="#features">See how it works</a>
     </div>
 
@@ -83,7 +83,7 @@ const faqs = [
         <div class="d-row"><Fragment set:html={logo('Perplexity')} /><span>Perplexity · Pro</span><span id="d-plx-v" class="d-val">5 left</span></div>
       </div>
       <div id="d-toast" style="margin-top:12px; padding:10px 12px; border-radius:10px; background:#fff7ed; border:1px solid #fed7aa; font-size:13px; color:#9a3412; opacity:0; transform:translateY(6px); transition:opacity .4s ease, transform .4s ease">
-        ⚠️ <span id="d-toast-t">Claude at ~53% — plan around your 4h reset.</span>
+        ⚠️ <span id="d-toast-t">Claude at ~53% - plan around your 4h reset.</span>
       </div>
     </div>
   </header>
@@ -194,7 +194,7 @@ const faqs = [
       <h2 style="font-size:32px; max-width:520px; margin:0 auto">Take back control of your AI stack</h2>
       <p class="muted" style="margin:14px auto 0; max-width:480px; font-size:17px">Add the extension, connect your tools, and never hit a limit by surprise again.</p>
       <div style="display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap">
-        <a class="btn" href={chromeUrl}>Add to Chrome — free</a>
+        <a class="btn" href={chromeUrl}>Add to Chrome - free</a>
         <a class="btn ghost" href="/integrations">Browse integrations</a>
       </div>
     </div>
@@ -245,7 +245,7 @@ const faqs = [
         $('d-cursor-v').textContent = (100 - Math.round(cursorUsed)) + '% left';
         if (Math.random() < 0.5 && gpt > 0) { gpt -= Math.ceil(Math.random() * 6); $('d-gpt-v').textContent = Math.max(0, gpt) + ' left'; }
         if (Math.random() < 0.3 && plx > 0) { plx -= 1; $('d-plx-v').textContent = plx + ' left'; }
-        if (Math.round(claudeUsed) >= 88) toast('Claude at ' + Math.round(claudeUsed) + '% — resets in 4h.');
+        if (Math.round(claudeUsed) >= 88) toast('Claude at ' + Math.round(claudeUsed) + '% - resets in 4h.');
         if (claudeUsed >= 96) { setTimeout(reset, 1100); }
       }
       function reset() {
@@ -259,7 +259,7 @@ const faqs = [
         $('d-cursor-b').style.width = cursorUsed + '%'; $('d-cursor-b').style.background = '#6366f1'; $('d-cursor-v').textContent = '39% left';
         $('d-gpt-v').textContent = gpt + ' left'; $('d-grok-v').textContent = grok + ' / 2 left'; $('d-plx-v').textContent = plx + ' left';
         var t = $('d-toast'); t.style.background = '#f0fdf4'; t.style.borderColor = '#bbf7d0'; t.style.color = '#15803d';
-        $('d-toast-t').textContent = 'Limits reset — you’re good to go. ✅';
+        $('d-toast-t').textContent = 'Limits reset - you’re good to go. ✅';
         t.style.opacity = '1'; t.style.transform = 'none';
         setTimeout(function () { t.style.opacity = '0'; t.style.transform = 'translateY(6px)'; }, 2400);
       }

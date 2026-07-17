@@ -1,0 +1,17 @@
+---
+const chromeUrl = import.meta.env.PUBLIC_CHROME_URL ?? '/#pricing';
+---
+<aside class="cta card">
+  <b>Track your real limits</b>
+  <p class="muted">See live usage, resets and peak-hour alerts across your whole AI stack.</p>
+  <a class="btn" href={chromeUrl}>Add to Chrome - free</a>
+</aside>
+<style>
+  .cta {
+    margin-top: 40px; padding: 28px 24px; text-align: center;
+    background: linear-gradient(135deg, #eef2ff, #faf5ff); border-color: #e0e7ff;
+  }
+  .cta b { font-size: 18px; }
+  .cta p { margin: 8px auto 0; max-width: 420px; font-size: 15px; }
+  .cta .btn { margin-top: 16px; }
+</style>

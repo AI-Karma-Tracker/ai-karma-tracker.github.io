@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
   return rss({
-    title: 'AI Karma Tracker — Blog & Tips',
+    title: 'AI Karma Tracker - Blog & Tips',
     description: 'Tips and guides for getting the most out of your AI usage limits.',
     site: context.site!,
     items: posts.map((p) => ({
