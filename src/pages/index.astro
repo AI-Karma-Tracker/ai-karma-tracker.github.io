@@ -107,10 +107,10 @@ const faqs = [
     <p class="muted reveal" style="text-align:center; max-width:620px; margin:12px auto 0; font-size:16px">Full limit tracking: live usage, reset times and alerts before you hit a wall.</p>
     <div class="card reveal" style="margin-top:28px; overflow:hidden; padding:0">
       {firstClass.map((p, i) => (
-        <div style={`display:flex; align-items:center; gap:14px; padding:16px 20px; ${i>0 ? 'border-top:1px solid var(--border)' : ''}`}>
+        <div class="fp-row" style={i>0 ? 'border-top:1px solid var(--border)' : ''}>
           <Fragment set:html={logo(p.name)} />
-          <b style="width:130px">{p.name}</b>
-          <span class="muted" style="font-size:15px">{p.what}</span>
+          <b class="fp-name">{p.name}</b>
+          <span class="muted fp-what">{p.what}</span>
         </div>
       ))}
     </div>
@@ -210,7 +210,11 @@ const faqs = [
     summary span { display:inline-block; transition:transform .15s ease; }
     @keyframes karmaFlash { 0%{background:#dcfce7} 100%{background:#eef0f5} }
     .flash { animation: karmaFlash .8s ease; }
-    .d-row { display:flex; align-items:center; gap:9px; font-size:14px; }
+    .fp-row { display:flex; align-items:center; gap:14px; padding:16px 20px; flex-wrap:wrap; }
+    .fp-name { flex:0 0 auto; }
+    .fp-what { font-size:15px; flex:1 1 200px; min-width:0; }
+    @media (min-width:520px) { .fp-name { width:130px; flex-basis:auto; } }
+    .d-row { display:flex; align-items:center; gap:9px; font-size:14px; min-width:0; }
     .d-val { margin-left:auto; color:var(--muted); font-size:13.5px; white-space:nowrap; }
     .d-track { height:8px; border-radius:5px; background:#eef0f5; overflow:hidden; margin-top:6px; }
     .d-track > div { height:100%; transition:width .9s ease, background .4s ease; }
