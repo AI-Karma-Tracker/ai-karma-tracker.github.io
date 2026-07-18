@@ -50,25 +50,25 @@ const ogUrl = new URL(ogImage, Astro.site).href;
 
     <footer>
       <div class="wrap foot">
-        <div style="max-width:320px">
-          <div class="logo" style="margin-bottom:8px"><img src="/icon.png" alt="" style="width:24px;height:24px;border-radius:6px" /> AI Karma Tracker</div>
-          <p class="muted" style="font-size:14px">See your AI limits before you hit the wall. Independent and not affiliated with any AI provider.</p>
+        <div class="foot-brand">
+          <div class="logo foot-logo"><img src="/icon.png" alt="" /> AI Karma Tracker</div>
+          <p class="muted">See your AI limits before you hit the wall. Independent and not affiliated with any AI provider.</p>
         </div>
-        <div style="display:flex; gap:48px; flex-wrap:wrap">
-          <div style="display:grid; gap:8px">
-            <b style="font-size:13px">Product</b>
+        <div class="foot-links">
+          <div class="foot-col">
+            <b>Product</b>
             <a href="/#features">Features</a>
             <a href="/integrations">Integrations</a>
             <a href="/blog">Blog</a>
             <a href="/tips">Tips</a>
             <a href="/#pricing">Pricing</a>
           </div>
-          <div style="display:grid; gap:8px">
-            <b style="font-size:13px">Account</b>
+          <div class="foot-col">
+            <b>Account</b>
             <a href="/account">Manage your plan</a>
           </div>
-          <div style="display:grid; gap:8px">
-            <b style="font-size:13px">Legal</b>
+          <div class="foot-col">
+            <b>Legal</b>
             <a href="/privacy">Privacy</a>
             <a href="/terms">Terms</a>
             <a href="/refund">Refunds</a>
@@ -76,8 +76,8 @@ const ogUrl = new URL(ogImage, Astro.site).href;
           </div>
         </div>
       </div>
-      <div class="wrap" style="padding-bottom:32px">
-        <p class="muted" style="font-size:13px">© {year} AI Karma Tracker · Third-party names and logos belong to their owners.</p>
+      <div class="wrap foot-bottom">
+        <p class="muted">© {year} AI Karma Tracker · Third-party names and logos belong to their owners.</p>
       </div>
     </footer>
     <script is:inline>
