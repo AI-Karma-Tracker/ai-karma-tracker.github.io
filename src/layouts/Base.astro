@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { CHROME_URL } from '../consts';
 interface Props { title?: string; description?: string; ogImage?: string; }
 const {
   title = 'AI Karma Tracker - see your AI limits before they stop you',
@@ -41,7 +42,7 @@ const ogUrl = new URL(ogImage, Astro.site).href;
           <a class="muted hide-sm" href="/blog">Blog</a>
           <a class="muted hide-sm" href="/tips">Tips</a>
           <a class="muted hide-sm" href="/#pricing">Pricing</a>
-          <a class="btn sm" href="/#pricing">Get started</a>
+          <a class="btn sm" href={CHROME_URL}>Add to Chrome</a>
         </div>
       </div>
     </nav>
@@ -57,6 +58,7 @@ const ogUrl = new URL(ogImage, Astro.site).href;
         <div class="foot-links">
           <div class="foot-col">
             <b>Product</b>
+            <a href={CHROME_URL}>Add to Chrome</a>
             <a href="/#features">Features</a>
             <a href="/integrations">Integrations</a>
             <a href="/blog">Blog</a>

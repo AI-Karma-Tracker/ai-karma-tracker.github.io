@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { logo } from '../lib/logos';
 
-const chromeUrl = import.meta.env.PUBLIC_CHROME_URL ?? 'https://chromewebstore.google.com/detail/ai-karma-tracker/gkhiemjkhadobiiggbbkjkglgjgogjoa';
+import { CHROME_URL as chromeUrl } from '../consts';
 // Gumroad checkout links (one per product/period), public permalinks.
 const gumroad = {
   hobby: {

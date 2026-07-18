@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { logo } from '../lib/logos';
+import { CHROME_URL } from '../consts';
 
 const firstClass = [
   { name: 'Claude', what: '5-hour & weekly windows, per-model (Fable)', color: '#D97757' },
@@ -28,7 +29,7 @@ const more = [
     <p class="muted" style="font-size:18px; max-width:600px; margin:16px auto 0">
       Six providers are first-class with live limit tracking. More tools connect via API key for spend &amp; usage - all in one place.
     </p>
-    <div style="margin-top:26px"><a class="btn" href="/#pricing">Get started free</a></div>
+    <div style="margin-top:26px"><a class="btn" href={CHROME_URL}>Add to Chrome - free</a></div>
   </header>
 
   <section class="wrap" style="padding:56px 24px 0">
@@ -63,14 +64,14 @@ const more = [
         </div>
       ))}
     </div>
-    <p class="muted" style="margin-top:16px; font-size:14px">Want a tool that's not here? <a href="/login" style="color:var(--brand); font-weight:600">Tell us →</a></p>
+    <p class="muted" style="margin-top:16px; font-size:14px">Want a tool that's not here? <a href="/contact" style="color:var(--brand); font-weight:600">Tell us →</a></p>
   </section>
 
   <section class="wrap" style="padding:64px 24px 0">
     <div class="card reveal" style="text-align:center; padding:44px 24px; background:linear-gradient(135deg,#eef2ff,#faf5ff); border-color:#e0e7ff">
       <h2 style="font-size:28px; max-width:520px; margin:0 auto">Bring your whole AI stack into one view</h2>
       <div style="margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
-        <a class="btn" href="/#pricing">Get started</a>
+        <a class="btn" href={CHROME_URL}>Add to Chrome</a>
         <a class="btn ghost" href="/#pricing">See pricing</a>
       </div>
     </div>
